@@ -1,60 +1,74 @@
 #include <iostream>
+#include<cmath>
 using namespace std;
-#include <algorithm>
-#include <cmath>
+
+double ellipse_program(double e , double semi_minor_axis){
+    return sqrt(pow(semi_minor_axis,2)/( 1-pow(e,2) ) );
+}
+
+double moon_program(int years = 1000){
+
+
+}
+
+
+
+
+
+
 int main() {
-	// your code goes here
-	int val1 = 10;
-    int *ptr = &val1;
-    int x = 1000;
+	bool exit = 0;
+while(!exit){
+    cout<<"Choose the number of the program you need: "<<endl<<"1)the ellipse program "<<endl<<"2)the moon program "<<endl<<"3)Exit \n";
+    int choice; cin>>choice;
 
-    int *ptr2 = ptr;
-    cout<< ptr<<' ' << ptr2<< ' '<< *ptr << ' '<< *ptr2<<endl;
-    val1 = 7;
-    *ptr = 400;
-    cout<< ptr<<' ' << ptr2<< ' '<< *ptr << ' '<< *ptr2<<endl;
+    int times{};
 
+    if(choice == 1){
 
+            cout<<"How many times u need to run the program: ";
+            cin>>times;
+            while(times--){
+                cout<<"Enter the eccentricity and the semi major axis: ";
 
+                double e , semi_minor_axis;cin>>e>>semi_minor_axis;
 
-    /// pointers and arrays ///
-    cout<<"\n Pointers and arrays \n ";
+                cout<<endl;
 
-    int arr[5] = {1,2,3,4,5};/// remember the arr has the variables consecutive
-    int *ptr_arr =arr;
+                double semi_major_axis = ellipse_program(e,semi_minor_axis);
 
-	// u can deal with the arr from the pointer then
-	cout<< arr[0]<< ' ' << ptr_arr[0]<<endl;
-	cout<<arr<< ' ' << ptr_arr <<endl;
+                cout<<"Semi major axis = "<<semi_major_axis<<" Km \n \n";
+                cout<<"Major axis  = "<<2*semi_major_axis<<" Km \n \n";
+        }
 
+    }
+    else if(choice == 2){
+            cout<<"How many times u need to run the program: ";
+            cin>>times;
+            while(times--){
+                int years = 1000;
 
-	cout<<"here the offset Notation ";
-	cout<<*(ptr_arr+1)<<endl;
+                bool change ;
 
-	cout<<"here the subscript Notation \n";
-	cout<<ptr_arr[1];
+                cout<<"Enter 1 to change no. of years or 0 if you don't: ";
+                cin>>change ;
 
+                if(change){
+                    cout<<"Enter the new number : ";
+                    cin>>years;
+                    moon_program(years);
+                }
 
+                cout<<" the distance in " << years<< " = "<< moon_program()<< " Km \n";
 
+        }
+    }
+	else
+        exit  = 1;
+	}
 
+	cout<<"With our sincere greetings (Eng. Gamal - Eng.Mohammed - Eng.Marwan) \n";
 
-
-	cout<<"here pointers arthimatic \n";
-
-	ptr_arr++;//here i moved the pointers one st
-	cout<<*++ptr_arr<<endl;//here he will increment the pointer to the next element and then print
-
-	// here u get the value then increment the pointer
-	cout<<*ptr_arr++<<endl;
-
-	++*ptr_arr;// this get the value and then increase the value not the pointer
-
-
-
-	int arr2[3] = {1,2,3};
-	int *ptr3 = arr2+1;
-
-    cout<<ptr3[-1]<< ' '<< ptr3[+1]<<endl;// ucan access an array like this
 
 	return 0;
 }
